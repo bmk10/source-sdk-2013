@@ -1276,6 +1276,9 @@ static void ShadowRestoreFunc( int nChangeFlags )
 	s_ClientShadowMgr.RestoreRenderState();
 }
 
+
+ConVar cl_shadows_num_cw( "cl_shadows_num_cw","10", FCVAR_REPLICATED | FCVAR_ARCHIVE | FCVAR_ARCHIVE_XBOX, "Game Draws how many env_projected textures max.", true, 1, true, 5 );
+
 //-----------------------------------------------------------------------------
 // Initialization, shutdown
 //-----------------------------------------------------------------------------
@@ -1290,8 +1293,13 @@ bool CClientShadowMgr::Init()
 
 	SetShadowBlobbyCutoffArea( 0.005 );
 
-	bool bTools = CommandLine()->CheckParm( "-tools" ) != NULL;
-	m_nMaxDepthTextureShadows = bTools ? 4 : 1;	// Just one shadow depth texture in games, more in tools
+//	bool bTools = CommandLine()->CheckParm( "-tools" ) != NULL;
+//	m_nMaxDepthTextureShadows = bTools ? 4 : 1;	// Just one shadow depth texture in games, more in tools
+
+// trying to make this configurable for low end and high end client
+m_nMaxDepthTextureShadows = (cl_shadows_num_cw.GetInt() > 0) ? mp_numshadows.GetInt()  : 1; // OLDCODE: from valve YOUR_CHOSEN_MAX; //with your number
+
+
 
 	bool bLowEnd = ( g_pMaterialSystemHardwareConfig->GetDXSupportLevel() < 80 );
 
