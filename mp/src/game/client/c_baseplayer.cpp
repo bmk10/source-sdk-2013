@@ -410,6 +410,11 @@ C_BasePlayer::C_BasePlayer() : m_iv_vecViewOffset( "C_BasePlayer::m_iv_vecViewOf
 	m_vecOldViewAngles.Init();
 #endif
 
+// disobey valve wiki for newbs, and in more lower base class that will effect hlbaseplayer or sdk_player or tf_player etc..
+ConVarRef scissor( "r_flashlightscissor" );
+scissor.SetValue( "0" );
+
+
 	m_pFlashlight = NULL;
 
 	m_pCurrentVguiScreen = NULL;
