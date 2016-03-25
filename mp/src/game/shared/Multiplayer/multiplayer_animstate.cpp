@@ -794,7 +794,10 @@ bool CMultiPlayerAnimState::HandleSwimming( Activity &idealActivity )
 			m_bFirstSwimFrame = false;
 		}
 
-		idealActivity = ACT_MP_SWIM;		
+	//	idealActivity = ACT_MP_SWIM;	// most animations don't handle thing, like HL2 based vanilla models,
+	//but our mods will use PRONE AND ITS FREE AND LOOKS NOT SUPER TERRIBLE, and more real then RUN , bm_killer10
+	// https://developer.valvesoftware.com/wiki/Fix_Missing_Player_Animations , 
+		idealActivity = ACT_MP_PNONE;
 		m_bInSwim = true;
 		return true;
 	}
