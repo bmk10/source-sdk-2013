@@ -161,11 +161,28 @@ bool CEnvProjectedTexture::KeyValue( const char *szKeyName, const char *szValue 
 		UTIL_ColorStringToLinearFloatColor( tmp, szValue );
 		m_LinearFloatLightColor = tmp;
 	}
+	else if ( FStrEq(szKeyName, "texturename" ) )
+	{
+		//add some custom default value. 3/25/2016
+		
+		if(!szValue || strlen(szValue) < 1)
+		{
+			
+				Q_strcpy( m_SpotlightTextureName.GetForModify(), "effects/flashlight001" ); // we saved 
+				// hammer editors emtpy fgd entitiy env_projectied value being filled with lazy humans
+				// who are busy
+		}
+		else
+		{
+		Q_strcpy( m_SpotlightTextureName.GetForModify(), szValue );
+		}
+		
+	}
 	else
 	{
 		return BaseClass::KeyValue( szKeyName, szValue );
 	}
-
+ 
 	return true;
 }
 
