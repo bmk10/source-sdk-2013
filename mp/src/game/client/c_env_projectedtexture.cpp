@@ -241,7 +241,8 @@ else
 
 void C_EnvProjectedTexture::Simulate( void )
 {
-	UpdateLight( false );
+	//UpdateLight( false );
+    UpdateLight( GetMoveParent() != NULL );
 
 	BaseClass::Simulate();
 }
