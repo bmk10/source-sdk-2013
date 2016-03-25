@@ -145,7 +145,9 @@ public:
 	// Should this object receive shadows?
 	virtual bool			ShouldReceiveProjectedTextures( int flags )
 	{
-		return false;
+	//	return false;
+	return true;
+	// upper weapons may feature them selves are always bright? or user setting? 3/25/2016 bm_killer10
 	}
 
 	// Add entity to visible view models list?
