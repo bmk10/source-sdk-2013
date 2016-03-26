@@ -19,7 +19,7 @@
 //-----------------------------------------------------------------------------
 // Purpose: The actual storage for pooled per-level strings
 //-----------------------------------------------------------------------------
-#ifdef GC
+#ifdef GC // good name...
 class CGameStringPool
 #else
 class CGameStringPool : public CBaseGameSystem
